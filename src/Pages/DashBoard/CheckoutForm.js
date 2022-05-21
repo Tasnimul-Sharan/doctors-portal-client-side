@@ -16,7 +16,7 @@ const CheckoutForm = ({ appointment }) => {
   const { _id, price, patient, patientName } = appointment;
 
   useEffect(() => {
-    fetch("http://localhost:4000/create-payment-intent", {
+    fetch("https://stormy-earth-10595.herokuapp.com/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -81,7 +81,7 @@ const CheckoutForm = ({ appointment }) => {
         transactionId: paymentIntent.id,
       };
 
-      fetch(`http://localhost:4000/booking/${_id}`, {
+      fetch(`https://stormy-earth-10595.herokuapp.com/booking/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
@@ -119,7 +119,7 @@ const CheckoutForm = ({ appointment }) => {
         <button
           className="btn btn-success btn-sm mt-4"
           type="submit"
-          disabled={!stripe || !clientSecret}
+          disabled={!stripe || !clientSecret || success}
         >
           Pay
         </button>

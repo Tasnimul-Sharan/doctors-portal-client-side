@@ -3,6 +3,7 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
+import Loading from "./Loading";
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -11,6 +12,11 @@ const Navbar = () => {
     signOut(auth);
     localStorage.removeItem("accessToken");
   };
+
+  if (loading) {
+    return <Loading />;
+  }
+
   const menuItems = (
     <>
       <li>
@@ -78,7 +84,7 @@ const Navbar = () => {
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="">
         <label
           tabindex="1"
           for="dashboard-sidebar"

@@ -13,7 +13,9 @@ const AddDoctor = () => {
   } = useForm();
 
   const { data: services, isLoading } = useQuery("services", () =>
-    fetch("http://localhost:4000/service").then((res) => res.json())
+    fetch("https://stormy-earth-10595.herokuapp.com/service").then((res) =>
+      res.json()
+    )
   );
 
   const imageStorageKey = "9e152fb87d4e4c803a92161f47792cc6";
@@ -46,7 +48,7 @@ const AddDoctor = () => {
             img: img,
           };
 
-          fetch("http://localhost:4000/doctor", {
+          fetch("https://stormy-earth-10595.herokuapp.com/doctor", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -65,7 +67,7 @@ const AddDoctor = () => {
             });
 
           //   axios
-          //     .post("http://localhost:4000/doctor", doctor, {
+          //     .post("https://stormy-earth-10595.herokuapp.com/doctor", doctor, {
           //       headers: {
           //         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           //       },

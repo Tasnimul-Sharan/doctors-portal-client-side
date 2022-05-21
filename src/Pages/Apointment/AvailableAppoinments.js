@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
 import BookingModal from "./BookingModal";
@@ -15,20 +15,15 @@ const AvailableAppoinments = ({ date }) => {
     isLoading,
     refetch,
   } = useQuery(["available", formattedData], () =>
-    fetch(`http://localhost:4000/available?data=${formattedData}`).then((res) =>
-      res.json()
-    )
+    fetch(
+      `https://stormy-earth-10595.herokuapp.com/available?data=${formattedData}`
+    ).then((res) => res.json())
   );
 
   if (isLoading) {
     return <Loading />;
   }
-  // useEffect(() => {
-  //   fetch(`http://localhost:4000/available?data=${formattedData}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setServices(data));
-  // }, []);
-  // console.log(date.toString());
+
   return (
     <div className="my-10">
       <h4 className="text-xl text-secondary text-center my-12">

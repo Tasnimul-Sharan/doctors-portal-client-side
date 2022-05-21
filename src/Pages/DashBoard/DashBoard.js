@@ -7,8 +7,7 @@ import useAdmin from "../../hooks/useAdmin";
 const DashBoard = () => {
   const [user] = useAuthState(auth);
   const admin = useAdmin(user);
-  console.log(user);
-  console.log(admin);
+
   return (
     <div class="drawer drawer-mobile">
       <input id="dashboard-sidebar" type="checkbox" class="drawer-toggle" />
@@ -29,16 +28,6 @@ const DashBoard = () => {
           <li>
             <Link to="/dashboard/review">My Reviews</Link>
           </li>
-          <li>
-            <Link to="/dashboard/review"></Link>
-          </li>
-
-          {/* <li>
-            <Link to="/dashboard/users">All Users</Link>
-          </li>
-          <li>
-            <Link to="/dashboard/addDocter">Add a Doctor</Link>
-          </li> */}
 
           {admin && (
             <li>

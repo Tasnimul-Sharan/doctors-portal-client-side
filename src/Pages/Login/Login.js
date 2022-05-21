@@ -79,7 +79,7 @@ const Login = () => {
               <label class="label">
                 {errors.email?.type === "required" && (
                   <span class="label-text-alt text-red-500">
-                    {console.log(errors.email.message)}
+                    {errors.email.message}
                   </span>
                 )}
                 {errors.email?.type === "pattern" && (
@@ -95,7 +95,7 @@ const Login = () => {
               </label>
               <input
                 type="password"
-                placeholder="Password"
+                placeholder="Enter Password"
                 class="input input-bordered w-full max-w-xs"
                 {...register("password", {
                   required: {

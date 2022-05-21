@@ -27,21 +27,23 @@ const BookingModal = ({ date, treatment, setTreatment, refetch }) => {
       phone: event.target.phone.value,
     };
     console.log(booking);
-    axios.post("http://localhost:4000/booking", booking).then((res) => {
-      const { data } = res;
-      console.log(data);
-      if (data.success) {
-        toast.success(`Appointment set ${formatedDate} at ${slot}`);
-      } else {
-        toast.error(
-          `Already have an appointment on ${data.booking?.date} at ${data?.booking?.slot}`
-        );
-      }
-      refetch();
-      setTreatment(null);
-    });
+    axios
+      .post("https://stormy-earth-10595.herokuapp.com/booking", booking)
+      .then((res) => {
+        const { data } = res;
+        console.log(data);
+        if (data.success) {
+          toast.success(`Appointment set ${formatedDate} at ${slot}`);
+        } else {
+          toast.error(
+            `Already have an appointment on ${data.booking?.date} at ${data?.booking?.slot}`
+          );
+        }
+        refetch();
+        setTreatment(null);
+      });
 
-    // fetch("http://localhost:4000/booking", {
+    // fetch("https://stormy-earth-10595.herokuapp.com/booking", {
     //   method: "POST",
     //   headers: {
     //     "content-type": "application-type",

@@ -13,7 +13,7 @@ const stripePromise = loadStripe(
 const Payment = () => {
   const { id } = useParams();
   const { data: appointment, isLoading } = useQuery(["booking", id], () =>
-    fetch(`http://localhost:4000/booking/${id}`, {
+    fetch(`https://stormy-earth-10595.herokuapp.com/booking/${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
